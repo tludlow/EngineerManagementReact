@@ -86,11 +86,11 @@ input[type=text], input[type=email], input[type=password], select {
 }
 
 .navbar-signuporin {
-  color: #22D145 !important;
-  border-style: solid;
-  border-color: #22D145;
-  border-width: 1.4px;
+  color: white !important;
   border-radius: 21px;
+  background: #FF5F6D;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #DFA559, #FF5F6D);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #DFA559, #FF5F6D); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */  
   height: 35px;
   width: 150px;
   margin-top: 8px;
@@ -102,6 +102,13 @@ input[type=text], input[type=email], input[type=password], select {
   -webkit-box-shadow: 4px 4px 5px 0px rgba(0, 0, 0, 0.05);
   -moz-box-shadow: 4px 4px 5px 0px rgba(0, 0, 0, 0.05);
   box-shadow: 4px 4px 5px 0px rgba(0, 0, 0, 0.05);
+  transition: .2s ease-in-out;
+  &:hover {
+    transition: .2s ease-in-out;
+    -webkit-box-shadow: 4px 4px 5px 0px rgba(0, 0, 0, 0.2);
+    -moz-box-shadow: 4px 4px 5px 0px rgba(0, 0, 0, 0.2);
+    box-shadow: 4px 4px 5px 0px rgba(0, 0, 0, 0.2);
+  }
 }
 
 .navbar-user {

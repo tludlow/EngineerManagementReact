@@ -15,17 +15,12 @@ import css from './styles/main.scss';
   Import Components
 */
 import App from './components/App';
-import ErrorPage from "./components/error/ErrorPage";
 
 /*
   Import Views
 */
 import Home from "./views/Home";
 import AuthView from "./views/AuthView";
-import WriteStorie from "./views/WriteStorie";
-import StaffDashboard from "./views/StaffDashboard";
-import ProfileView from "./views/ProfileView";
-import PostView from "./views/PostView";
 
 /* Import our data store */
 import store, {history} from './store';
@@ -48,11 +43,6 @@ render(
       <Route path="/" component={App}>
         <IndexRoute component={Home} />
         <Route path="/auth" component={AuthView}></Route>
-        <Route path="/error" component={ErrorPage}></Route>
-        <Route path="/newstory" component={WriteStorie}></Route>
-        <Route path="/staffdashboard" component={StaffDashboard}></Route>
-        <Route path="/profile/:profileName" component={ProfileView}></Route>
-        <Route path="/post/:postId" component={PostView}></Route>
       </Route>
     </Router>
   </Provider>,

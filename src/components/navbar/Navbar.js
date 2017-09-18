@@ -31,13 +31,12 @@ class Navbar extends Component {
 								<span className="icon-bar"></span>
 							</button>
 							<div className="navbar-brand-container">
-									<Link to="/" className="navbar-brand">Stories</Link>
+									<Link to="/" className="navbar-brand">Engineer Management</Link>
 							</div>
 						</div>
 						<div className="collapse navbar-collapse clearfix" id="bs-example-navbar-collapse-1">
 							<ul className="nav navbar-nav navbar-right">
 								<li className="hidden"><a href="#page-top">Page Top</a></li>
-								<li>{this.props.user.isLoggedIn ? <Link to="/newstory" className="navbar-writeastory">Write a story</Link> : <p></p>}</li>
 								<li>{this.props.user.isLoggedIn ? <p className="navbar-user">{this.props.user.data.username} <OverlayTrigger placement="bottom" overlay={tooltip}><i onClick={()=> this.clickHandler()} className="fa fa-caret-down"></i></OverlayTrigger></p> : <Link to="/auth" className="navbar-signuporin">Sign Up / Sign In</Link>}</li>
 							</ul>
 						</div>
