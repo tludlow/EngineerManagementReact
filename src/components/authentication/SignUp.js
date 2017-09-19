@@ -71,7 +71,7 @@ class SignUp extends Component {
 			return (
 			<div className="signUpFormArea container">
 				<h3>Sign Up</h3>
-				<p>Create an account to engage in the community and write stories you think are worthy of being shared.</p>
+				<p>Create an account to interact with the system.</p>
 				<br/>
 				<form className="SignUpForm" onSubmit={(e) => this.handleSubmitSignup(e)}>			
 					<fieldset>

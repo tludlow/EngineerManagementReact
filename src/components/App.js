@@ -30,7 +30,7 @@ import Main from './Main';
 */
 
 function mapStateToProps(state) {
-  return {user: state.user, posts: state.posts};
+  return {user: state.user};
 }
 
 /*

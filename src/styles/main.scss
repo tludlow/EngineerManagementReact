@@ -130,6 +130,10 @@ input[type=text], input[type=email], input[type=password], select {
 .SignUpForm, .signInFormArea, .writeStorieForm {
   .SignUpForm-submit {
     margin-top: 10px;
+    background: #FF5F6D;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #DFA559, #FF5F6D);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #DFA559, #FF5F6D); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */ 
+    border: none !important; 
   }
   .formErrors {
     color: red;
@@ -325,4 +329,7 @@ input[type=text], input[type=email], input[type=password], select {
   font-weight: 600;
   font-size: 14px;
   color: red;
+}
+.home {
+  text-align: center;
 }
