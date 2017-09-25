@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 
 import Navbar from "../components/navbar/Navbar";
+import Job from "../components/Jobs/Job";
 
 export default class Home extends Component {
 
@@ -21,11 +22,10 @@ export default class Home extends Component {
 		} else {
 			//Render this when they are signed in.
 			return (
-				<div className="homepage">
+				<div className="signed-in-homepage">
 					<Navbar/>
-					<div className="home container">
-						<h3>You are signed in.</h3>
-						<h4>Meow</h4>
+					<div className="container">
+						<Job title={"This is a title"}/>
 					</div>
 				</div>
 			);

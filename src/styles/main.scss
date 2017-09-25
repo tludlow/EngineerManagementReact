@@ -348,5 +348,23 @@ input[type=text], input[type=email], input[type=password], select {
 }
 #navbar-user-verified {
   margin-right: 6px;
-  color: #2B39B8 !important;
+  color: white !important;
+  background-color: #2B39B8;
+  border-radius: 4px;
+  padding: 2px;
+  font-size: 12px;
+}
+.job {
+  background-color: white;
+  border-radius: 4px;
+  -webkit-box-shadow: 4px 4px 5px 0px rgba(0, 0, 0, 0.1);
+  -moz-box-shadow: 4px 4px 5px 0px rgba(0, 0, 0, 0.1);
+  box-shadow: 4px 4px 5px 0px rgba(0, 0, 0, 0.1);
+  margin-bottom: 10px;
+  .job-title {
+    font-weight: bold;
+    font-size: 20px;
+    margin-top: 4px;
+    margin-left: 4px;
+  }
 }
