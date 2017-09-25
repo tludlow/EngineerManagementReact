@@ -25,49 +25,7 @@ export default class Home extends Component {
 					<Navbar/>
 					<div className="home container">
 						<h3>You are signed in.</h3>
-						<h3>You are signed in.</h3>
-						<h3>You are signed in.</h3>
-						<h3>You are signed in.</h3>
-						<h3>You are signed in.</h3>
-						<h3>You are signed in.</h3>
-						<h3>You are signed in.</h3>
-						<h3>You are signed in.</h3>
-						<h3>You are signed in.</h3>
-						<h3>You are signed in.</h3>
-						<h3>You are signed in.</h3>
-						<h3>You are signed in.</h3>
-						<h3>You are signed in.</h3>
-						<h3>You are signed in.</h3>
-						<h3>You are signed in.</h3>
-						<h3>You are signed in.</h3>
-						<h3>You are signed in.</h3>
-						<h3>You are signed in.</h3>
-						<h3>You are signed in.</h3>
-						<h3>You are signed in.</h3>
-						<h3>You are signed in.</h3>
-						<h3>You are signed in.</h3>
-						<h3>You are signed in.</h3>
-						<h3>You are signed in.</h3>
-						<h3>You are signed in.</h3>
-						<h3>You are signed in.</h3>
-						<h3>You are signed in.</h3>
-						<h3>You are signed in.</h3>
-						<h3>You are signed in.</h3>
-						<h3>You are signed in.</h3>
-						<h3>You are signed in.</h3>
-						<h3>You are signed in.</h3>
-						<h3>You are signed in.</h3>
-						<h3>You are signed in.</h3>
-						<h3>You are signed in.</h3>
-						<h3>You are signed in.</h3>
-						<h3>You are signed in.</h3>
-						<h3>You are signed in.</h3>
-						<h3>You are signed in.</h3>
-						<h3>You are signed in.</h3>
-						<h3>You are signed in.</h3>
-						<h3>You are signed in.</h3>
-						<h3>You are signed in.</h3>
-						<h3>You are signed in.</h3>
+						<h4>Meow</h4>
 					</div>
 				</div>
 			);
