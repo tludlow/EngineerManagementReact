@@ -1,3 +1,4 @@
+//Load the json object into the application so that we can used the stored state.
 export const loadState = () => {
   try {
     const serializedState = localStorage.getItem('engineermanagement');

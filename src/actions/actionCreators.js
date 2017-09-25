@@ -1,8 +1,10 @@
 import axios from "axios";
 import {browserHistory} from "react-router";
 
-//User actions
-//Signup
+//User actions:
+
+//The below actions are asynchronous so they have a request and a success failure. We can't return the outcome in the result as the server wont reply
+//Instantly. This is gotten around with by having mutliple outcomes a success and failure, which we fire in the thunk function as required.
 export function userSignUpRequest() {
   return {type: 'USER_SIGNUP_REQUEST'}
 }
@@ -17,6 +19,7 @@ export function userLogout() {
   return {type: 'USER_LOGOUT'}
 }
 
+//Function used to sign up the user. Dispatches action of request, sends the request and gets a response, then dispatches success or failure depending on needed reducer action.
 export function signUpUser(username, password, email) {
   return dispatch => {
     dispatch(userSignUpRequest());

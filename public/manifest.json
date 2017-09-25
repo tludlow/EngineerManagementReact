@@ -1,6 +1,6 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "EngineerManagement",
+  "name": "A way to manage engineers and everything going on.",
   "icons": [
     {
       "src": "favicon.ico",

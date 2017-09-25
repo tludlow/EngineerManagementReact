@@ -3,7 +3,7 @@
 @import url('https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800');
 body {
   font-family: "Open Sans", sans-serif;
-  background-color: darken(#FAFAFA, 6);
+  background-color: #f1f1f1;
 }
 
 input[type=text], input[type=email], input[type=password], select {
@@ -125,6 +125,19 @@ input[type=text], input[type=email], input[type=password], select {
     transition: .5s ease !important;
     cursor: pointer;
   }
+}
+#wrench-logo {
+  font-size: 3rem;
+  margin-top: 8px;
+  color:#7C0E8C;
+  float: left;
+  margin-right: 8px;
+  text-shadow: 4px 4px 5px 0px rgba(0,0,0,0.2);
+}
+
+.main-info {
+  font-weight: bold;
+  color: #FF5F6D;
 }
 
 .SignUpForm, .signInFormArea, .writeStorieForm {

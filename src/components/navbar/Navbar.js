@@ -8,8 +8,8 @@ import { OverlayTrigger, Tooltip } from 'react-bootstrap';
 
 class Navbar extends Component {
 
+	//Lob the user out by dispatching the userLogout() function and forcing them to refresh the homescreen.
 	clickHandler() {
-		console.log("im being clicked");
 		this.props.userLogout();
 		browserHistory.push("/");
 	}
@@ -31,7 +31,8 @@ class Navbar extends Component {
 								<span className="icon-bar"></span>
 							</button>
 							<div className="navbar-brand-container">
-									<Link to="/" className="navbar-brand">Engineer Management</Link>
+								<i className="fa fa-wrench" id="wrench-logo"></i>
+								<Link to="/" className="navbar-brand">Engineer Management</Link>
 							</div>
 						</div>
 						<div className="collapse navbar-collapse clearfix" id="bs-example-navbar-collapse-1">

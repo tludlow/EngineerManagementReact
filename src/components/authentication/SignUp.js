@@ -70,7 +70,7 @@ class SignUp extends Component {
 		if (this.state.view === "signup") {
 			return (
 			<div className="signUpFormArea container">
-				<h3>Sign Up</h3>
+				<h3 className="main-info">Sign Up</h3>
 				<p>Create an account to interact with the system.</p>
 				<br/>
 				<form className="SignUpForm" onSubmit={(e) => this.handleSubmitSignup(e)}>			
@@ -110,7 +110,7 @@ class SignUp extends Component {
 		} else {
 			return (
 			<div className="signInFormArea container">
-				<h3>Sign In</h3>
+				<h3 className="main-info">Sign In</h3>
 				<p>Already have an account and want to access it, sign in below.</p>
 				<br/>
 				<form className="LoginForm" onSubmit={(e) => this.handleSubmitLogin(e)}>
