@@ -21,6 +21,7 @@ import App from './components/App';
 */
 import Home from "./views/Home";
 import AuthView from "./views/AuthView";
+import CreateJob from "./views/CreateJob";
 
 /* Import our data store */
 import store, {history} from './store';
@@ -32,6 +33,14 @@ import store, {history} from './store';
 // import Raven from 'raven-js'; import { sentry_url } from './data/config';
 // if(window) {   Raven.config(sentry_url).install(); }
 
+function requireAuth() {
+  return(nextState, replace) => {
+    let currentState = store.getState();
+    if(!currentState.user.isLoggedIn) {
+      replace({ pathname: "/auth" });
+    }
+  };
+}
 /*
   Rendering
   This is where we hook up the Store with our actual component and the router
@@ -43,6 +52,7 @@ render(
       <Route path="/" component={App}>
         <IndexRoute component={Home} />
         <Route path="/auth" component={AuthView}></Route>
+        <Route path="/createjob" component={CreateJob} onEnter={requireAuth()}></Route>
       </Route>
     </Router>
   </Provider>,

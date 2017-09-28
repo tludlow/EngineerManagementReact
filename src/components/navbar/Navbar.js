@@ -13,9 +13,11 @@ class Navbar extends Component {
 		this.props.userLogout();
 		browserHistory.push("/");
 	}
+	clickHandlerCreate() {
+		browserHistory.push("/createjob");
+	}
 	
 	render() {
-
 		const tooltip = (
   			<Tooltip id="tooltip">Click me to <strong>Logout</strong></Tooltip>
 		);
@@ -41,6 +43,7 @@ class Navbar extends Component {
 						<div className="collapse navbar-collapse clearfix" id="bs-example-navbar-collapse-1">
 							<ul className="nav navbar-nav navbar-right">
 								<li className="hidden"><a href="#page-top">Page Top</a></li>
+								{this.props.user.isLoggedIn ? <li onClick={()=> this.clickHandlerCreate()} className="nav-button-createjob">Create Job</li> : ""}
 								<li>{this.props.user.isLoggedIn ? <p className="navbar-user">{this.props.user.data.verified ? <OverlayTrigger placement="bottom" overlay={tooltipVerified}><i className="fa fa-check" id="navbar-user-verified" ></i></OverlayTrigger> : <p></p>}{this.props.user.data.username} <OverlayTrigger placement="bottom" overlay={tooltip}><i onClick={()=> this.clickHandler()} className="fa fa-caret-down"></i></OverlayTrigger></p> : <Link to="/auth" className="navbar-signuporin">Sign Up / Sign In</Link>}</li>
 							</ul>
 						</div>
