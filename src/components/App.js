@@ -17,7 +17,7 @@ import Main from './Main';
 
   We need a way to make
   1. our state (our data)
-  2. our 'dispatch' functions
+  2. our 'dispatch' functions 
   available to the <Main /> component.
 
   We will surface state and functions via props (this.props.whatever)

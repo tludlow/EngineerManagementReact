@@ -129,7 +129,7 @@ input[type=text], input[type=email], input[type=password], select {
 #wrench-logo {
   font-size: 3rem;
   margin-top: 8px;
-  color:#7C0E8C;
+  color:#5F6360;
   float: left;
   margin-right: 8px;
   text-shadow: 4px 4px 5px 0px rgba(0,0,0,0.2);
@@ -345,4 +345,47 @@ input[type=text], input[type=email], input[type=password], select {
 }
 .home {
   text-align: center;
+}
+#navbar-user-verified {
+  margin-right: 6px;
+  color: white !important;
+  background-color: #2B39B8;
+  border-radius: 4px;
+  padding: 2px;
+  font-size: 8px;
+  overflow: auto;
+  margin-top: 5px;
+}
+.job {
+  background-color: white;
+  border-radius: 4px;
+  -webkit-box-shadow: 4px 4px 5px 0px rgba(0, 0, 0, 0.1);
+  -moz-box-shadow: 4px 4px 5px 0px rgba(0, 0, 0, 0.1);
+  box-shadow: 4px 4px 5px 0px rgba(0, 0, 0, 0.1);
+  margin-bottom: 10px;
+  .job-title {
+    font-weight: bold;
+    font-size: 20px;
+    margin-top: 4px;
+    margin-left: 4px;
+  }
+}
+.nav-button-createjob {
+  font-weight: 700;
+  margin-top: 10px;
+  margin-right: 25px;
+  padding: 5px;
+  border: solid #34DA50 1px;
+  background-color: #25B43A;
+  color: white;
+  border-radius: 6px;
+  -webkit-box-shadow: 4px 4px 5px 0px rgba(0, 0, 0, 0.1);
+  -moz-box-shadow: 4px 4px 5px 0px rgba(0, 0, 0, 0.1);
+  box-shadow: 4px 4px 5px 0px rgba(0, 0, 0, 0.1);
+  transition: .5s ease-in-out;
+  &:hover {
+    background-color: #188627;
+    transition: .5s ease-in-out;
+    cursor: pointer;
+  }
 }

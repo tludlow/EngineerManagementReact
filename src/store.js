@@ -27,7 +27,8 @@ const initialState = {
     isLoggedIn: false,
     error: "",
     data: {
-      username: ""
+      username: "",
+      verified: false
     }
   }
 };
@@ -65,7 +66,8 @@ store.subscribe(throttle(() => {
       isLoggedIn: state.user.isLoggedIn,
       error: "",
       data: {
-        username: userAssigner
+        username: userAssigner,
+        verified: state.user.data.verified
       }
     }
   };
