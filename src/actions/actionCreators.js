@@ -74,3 +74,35 @@ export function loginUser(username, password) {
       });
   }
 }
+
+export function createJobRequest() {
+  return {type: 'CREATEJOB_REQUEST'}
+}
+export function createJobSuccess(dataGotten) {
+  return {type: 'CREATEJOB_SUCCESS', data: dataGotten}
+}
+export function createJobFailure(err) {
+  return {type: 'CREATEJOB_FAILURE', error: err}
+}
+
+export function createJob(title, body, assignee, date) {
+  return dispatch => {
+    dispatch(createJobRequest());
+    return axios({
+      method: 'post',
+      url: 'http://localhost:7770/job/addJob',
+      data: {
+        title, body, assignee, date
+      },
+      headers: {
+        'Authorization': `Token ${localStorage.getItem("token")}`
+      }
+    }).then((response) => {
+      console.log(response);
+      dispatch(createJobSuccess(response.data));
+      browserHistory.push("/");
+    }).catch((err) => {
+      dispatch(createJobFailure("There was an error creating your job, probably server related."));
+    });
+  }
+}

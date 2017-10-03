@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 
 import Navbar from "../components/navbar/Navbar";
+import CreateJobForm from "../components/forms/CreateJobForm";
 
 export default class CreateJob extends Component {
 
@@ -9,8 +10,9 @@ export default class CreateJob extends Component {
             <div className="create-job">
                 <Navbar />
                 <div className="container">
-                    <h3>Create Job:</h3>
+                    <h3 className="main-info">Create Job:</h3>
                     <p>Create a new job in the system by filling out the form below.</p>
+                    <CreateJobForm />
                 </div>
             </div>
         );

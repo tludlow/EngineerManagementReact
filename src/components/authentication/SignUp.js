@@ -8,7 +8,7 @@ class SignUp extends Component {
 		super(props);
 		this.state = {
 			errorMessage: "",
-			view: "signup"
+			view: "signin"
 		};
 	}
 

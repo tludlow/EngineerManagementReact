@@ -30,6 +30,10 @@ const initialState = {
       username: "",
       verified: false
     }
+  },
+  jobs: {
+    loading: false,
+    data: [],
   }
 };
 
@@ -69,6 +73,10 @@ store.subscribe(throttle(() => {
         username: userAssigner,
         verified: state.user.data.verified
       }
+    },
+    jobs: {
+      loading: false,
+      data: state.jobs.data
     }
   };
   saveState(stateToPersist);

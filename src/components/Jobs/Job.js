@@ -1,29 +1,19 @@
 import React, {Component} from 'react';
-import {bindActionCreators} from 'redux';
-import {connect} from 'react-redux';
-import * as actionCreators from '../../actions/actionCreators';
 
-class Job extends Component {
+import moment from "moment";
+
+export default class Job extends Component {
 
 	render() {
+        var relativeTime = moment(this.props.dateDue).fromNow();
         return (
             <div className="job row">
                 <div className="col-xs-12">
-                    <p className="job-title">{this.props.title}</p>
+                    <h5 className="job-title">{this.props.title} - <small>{relativeTime}</small></h5>
+                    <p className="job-body">{this.props.body}</p>
                 </div>
             </div>
         );
 	}
 }
 
-function mapStateToProps(state) {
-	return {user: state.user};
-}
-
-export function mapDispatchToProps(dispatch) {
-	return bindActionCreators(actionCreators, dispatch);
-}
-
-var JobClass = connect(mapStateToProps, mapDispatchToProps)(Job);
-
-export default JobClass;

@@ -6,7 +6,7 @@ body {
   background-color: #f1f1f1;
 }
 
-input[type=text], input[type=email], input[type=password], select {
+input[type=text], input[type=email], input[type=password], input[type=date], select, textarea {
   width: 100%;
   padding: 12px 20px;
   margin: 8px 0;
@@ -140,7 +140,7 @@ input[type=text], input[type=email], input[type=password], select {
   color: #FF5F6D;
 }
 
-.SignUpForm, .signInFormArea, .writeStorieForm {
+.SignUpForm, .signInFormArea, .writeStorieForm, .createJobForm {
   .SignUpForm-submit {
     margin-top: 10px;
     background: #FF5F6D;  /* fallback for old browsers */
