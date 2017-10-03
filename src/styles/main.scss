@@ -386,6 +386,6 @@ input[type=text], input[type=email], input[type=password], select {
   &:hover {
     background-color: #188627;
     transition: .5s ease-in-out;
-    cursor: hand;
+    cursor: pointer;
   }
 }
