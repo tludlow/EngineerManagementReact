@@ -22,7 +22,6 @@ class LoggedInView extends Component {
     componentDidMount() {
         //Get the jobs.
         axios.get("http://localhost:7770/job/getJobs").then((response)=> {
-            console.log(response);
             this.setState({isLoaded: true, jobs: response.data.jobs});
         }).catch((err)=> {
             this.setState({isLoaded: true, error: "There was an error getting the posts."});
@@ -44,7 +43,7 @@ class LoggedInView extends Component {
                     </div>
                 </div>
             );
-        } else if(this.state.isLoaded == false) {
+        } else if(this.state.isLoaded === false) {
             return (
                 <div className="homepage">
                     <Navbar/>
