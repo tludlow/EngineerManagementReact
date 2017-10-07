@@ -22,14 +22,19 @@ class LoggedInView extends Component {
     componentDidMount() {
         //Get the jobs.
         axios.get("http://localhost:7770/job/getJobs").then((response)=> {
+            if(response.data.ok === false) {
+                this.setState({isLoaded: true, error: response.data.error});
+                return;
+            }
             this.setState({isLoaded: true, jobs: response.data.jobs});
         }).catch((err)=> {
             this.setState({isLoaded: true, error: "There was an error getting the posts."});
         });
     }
 
+
 	render() {
-        if(this.state.isLoaded && this.state.error.length < 1) {
+        if(this.state.isLoaded && this.state.error.length < 1 ) {
             return (
                 <div className="homepage">
                     <Navbar />
@@ -50,6 +55,16 @@ class LoggedInView extends Component {
                     <div className="home container">
                         {/* map over all jobs here and render them in the job component, pass through props.*/}
                         <Spinner />
+                    </div>
+                </div>
+            );
+        } else {
+            return (
+                <div className="homepage">
+                    <Navbar/>
+                    <div className="home container">
+                        <h3>There was an error...</h3>
+                        <p>{this.state.error}</p>
                     </div>
                 </div>
             );

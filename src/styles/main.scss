@@ -413,3 +413,52 @@ input[type=text], input[type=email], input[type=password], input[type=date], sel
   overflow-y: auto;
   word-wrap: break-word;
 }
+.remove-button {
+  margin-left: 25px;
+  margin-top: 45px;
+}
+.job-menu {
+  background-color: white;
+  border-radius: 4px;
+  padding: 4px;
+  box-shadow: 4px 4px 5px 0px rgba(0, 0, 0, 0.1);
+  font-weight: 600;
+}
+.job-information {
+  background-color: white;
+  border-radius: 4px;
+  padding: 4px;
+  box-shadow: 4px 4px 5px 0px rgba(0, 0, 0, 0.1);
+}
+.job-remove-button {
+  padding: 6px;
+  background-color: rgb(255, 5, 5);
+  color: white;
+  font-weight: 700;
+  border-radius: 6px;
+  box-shadow: 4px 4px 5px 0px rgba(0, 0, 0, 0.1);
+  margin-top: 10px;
+  cursor: pointer;
+  transition: .3s ease-in-out;
+  transform: scale(1);
+  &:hover {
+    transition: .3s ease-in-out;
+    transform: scale(1.12);
+  }
+}
+.job-edit-button {
+  padding: 6px;
+  background-color: rgb(255, 152, 7);
+  color: white;
+  font-weight: 700;
+  border-radius: 6px;
+  box-shadow: 4px 4px 5px 0px rgba(0, 0, 0, 0.1);
+  margin-top: 10px;
+  cursor: pointer;
+  transition: .3s ease-in-out;
+  transform: scale(1);
+  &:hover {
+    transition: .3s ease-in-out;
+    transform: scale(1.12);
+  }
+}

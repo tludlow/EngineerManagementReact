@@ -8,6 +8,7 @@ export default class Job extends Component {
     searchJob() {
         browserHistory.push("/job/" + this.props.id);
     }
+
 	render() {
         var relativeTime = moment(this.props.dateDue).fromNow();
         var toStyle;
