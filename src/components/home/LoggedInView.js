@@ -37,7 +37,7 @@ class LoggedInView extends Component {
                         <h3>Jobs:</h3>
                         {this.state.jobs.map((job, i)=> (
                             <div className="row" key={i}>
-                                <Job title={job.title} body={job.body} assignee={job.assignedTo} dateDue={job.dateDue} />
+                                <Job title={job.title} body={job.body} assignee={job.assignedTo} dateDue={job.dateDue} id={job._id} />
                             </div>
 					    ))}
                     </div>

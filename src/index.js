@@ -22,6 +22,7 @@ import App from './components/App';
 import Home from "./views/Home";
 import AuthView from "./views/AuthView";
 import CreateJob from "./views/CreateJob";
+import JobView from "./views/JobView";
 
 /* Import our data store */
 import store, {history} from './store';
@@ -53,6 +54,7 @@ render(
         <IndexRoute component={Home} />
         <Route path="/auth" component={AuthView}></Route>
         <Route path="/createjob" component={CreateJob} onEnter={requireAuth()}></Route>
+        <Route path="/job/:jobid" component={JobView} onEnter={requireAuth()}></Route>
       </Route>
     </Router>
   </Provider>,

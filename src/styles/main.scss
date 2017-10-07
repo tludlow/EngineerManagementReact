@@ -365,6 +365,8 @@ input[type=text], input[type=email], input[type=password], input[type=date], sel
   margin-left: 15px;
   margin-top: 5px;
   margin-bottom: 20px;
+  height: 120px;
+  max-width: 1190px;
   .job-title {
     font-weight: bold;
     font-size: 20px;
@@ -398,4 +400,16 @@ input[type=text], input[type=email], input[type=password], input[type=date], sel
   border-radius: 4px;
   margin-top: 12px;
   font-size: 14px;
+}
+.job-item {
+  transition: .5s ease-in-out;
+  &:hover {
+    transition: .5s ease-in-out;
+    cursor: pointer;
+    -webkit-box-shadow: 4px 4px 5px 0px rgba(0, 0, 0, 0.2);
+    -moz-box-shadow: 4px 4px 5px 0px rgba(0, 0, 0, 0.2);
+    box-shadow: 4px 4px 5px 0px rgba(0, 0, 0, 0.2);
+  }
+  overflow-y: auto;
+  word-wrap: break-word;
 }
