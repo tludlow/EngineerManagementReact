@@ -53,7 +53,6 @@ class LoggedInView extends Component {
                 <div className="homepage">
                     <Navbar/>
                     <div className="home container">
-                        {/* map over all jobs here and render them in the job component, pass through props.*/}
                         <Spinner />
                     </div>
                 </div>

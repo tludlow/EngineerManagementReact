@@ -11,7 +11,8 @@ export default class JobView extends Component {
         this.state = {
             loading: true,
             error: "",
-            job: {}
+            job: {},
+            removeClicks: 0,
         };
     }
 
@@ -32,12 +33,18 @@ export default class JobView extends Component {
     removeJob() {
         //Query the database to remove the job.
         const jobID = this.props.params.jobid;
+        //Make sure the user clicks the button twice to prevent accidental removal of the job.
+        if(this.state.removeClicks < 1) {
+            this.setState({removeClicks: 1});
+            return;
+        }
+        //Query the api to delete the job.
         axios.get("http://localhost:7770/job/deletejob/" + jobID).then((response)=> {
-            console.log(response);
+            browserHistory.push("/");
         }).catch((err)=> {
-            console.log(err);
+            browserHistory.push("/");
         });
-        browserHistory.push("/");
+        
     }
 
     editJob() {
@@ -45,6 +52,11 @@ export default class JobView extends Component {
     
 	render() {
         const jobID = this.props.params.jobid;
+        
+        //Remove button tooltip.
+        const removeTooltip = (
+            <Tooltip id="tooltip"><strong>Double click</strong> this button to remove the job.</Tooltip>
+        );
 
         if(this.state.loading) {
             return (
@@ -56,7 +68,8 @@ export default class JobView extends Component {
                     </div>
                 </div>
             );
-        } else if(this.state.error) {
+        } 
+        if(this.state.error) {
             return (
                 <div className="job-view">
                     <Navbar />
@@ -74,8 +87,13 @@ export default class JobView extends Component {
                         <div className="row">
                             <div className="col-xs-2">
                                 <div className="job-menu">
-                                    <i onClick={()=> this.removeJob()} className="fa fa-remove job-remove-button"></i> Remove Job<br />
-                                    <i onClick={()=> this.editJob()} className="fa fa-pencil job-edit-button"></i> Edit Job
+                                    <OverlayTrigger placement="top" overlay={removeTooltip}>
+                                        <div className="overlay-container">
+                                            <i onClick={()=> this.removeJob()} className="fa fa-remove job-remove-button"></i> <span>Remove Job</span>
+                                        </div>
+                                    </OverlayTrigger>
+                                    <br/>
+                                    <i onClick={()=> this.editJob()} className="fa fa-pencil job-edit-button"></i> <span>Edit Job</span>
                                 </div>
                             </div>
                             <div className="col-xs-10">

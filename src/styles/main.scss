@@ -378,11 +378,12 @@ input[type=text], input[type=email], input[type=password], input[type=date], sel
   font-weight: 700;
   margin-top: 10px;
   margin-right: 25px;
-  padding: 5px;
-  border: solid #34DA50 1px;
+  padding: 7px;
   background-color: #25B43A;
   color: white;
-  border-radius: 6px;
+  border-radius: 50%;
+  width: 32px;
+  height: 32px;
   -webkit-box-shadow: 4px 4px 5px 0px rgba(0, 0, 0, 0.1);
   -moz-box-shadow: 4px 4px 5px 0px rgba(0, 0, 0, 0.1);
   box-shadow: 4px 4px 5px 0px rgba(0, 0, 0, 0.1);
@@ -391,6 +392,10 @@ input[type=text], input[type=email], input[type=password], input[type=date], sel
     background-color: #188627;
     transition: .5s ease-in-out;
     cursor: pointer;
+  }
+  i {
+    margin-left: 4px;
+    
   }
 }
 .due-soon {
