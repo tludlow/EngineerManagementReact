@@ -5,7 +5,13 @@ import * as actionCreators from '../../actions/actionCreators';
 
 class CreateJobForm extends Component {
 
-
+    constructor(props) {
+        super();
+        this.state = {
+            assignedTo: [],
+            assigneeFieldInput: "",
+        };
+    }
     handleCreateForm(e) {
         e.preventDefault();
         console.log("submitted");
@@ -14,7 +20,11 @@ class CreateJobForm extends Component {
         var formAssignee = this.refs.formcreatejobassignuser.value;
         var formDatePicked = this.refs.formcreatejobdate.value;
 
-		this.props.createJob(formTitle, formBody, formAssignee, formDatePicked); //title, body, asiggnee, date
+		this.props.createJob(formTitle, formBody, this.state.assignedTo, formDatePicked); //title, body, asiggnee, date
+    }
+
+    handleAssigneeChange(event) {
+        this.setState({assigneeFieldInput: event.target.value, assignedTo: this.refs.formcreatejobassignuser.value.replace(" ", "").split(",")});
     }
     
 
@@ -49,7 +59,9 @@ class CreateJobForm extends Component {
 
                 <fieldset>
                     <p>Assign User</p>
-                    <input type="text" placeholder="Assign user, type their username" ref="formcreatejobassignuser" required/>
+                    <small>If assigning multiple users, seperate names with commas as such jeff,bill,bob</small><br/>
+                    <small>Assigned to: {this.state.assignedTo.length ? (this.state.assignedTo.join(",")) : 'Nobody!'}</small>
+                    <input type="text" value={this.state.assigneeFieldInput} placeholder="Assign user, type their username(s)" ref="formcreatejobassignuser" onChange={(event)=> this.handleAssigneeChange(event)} required/>
                 </fieldset>
 
                 <fieldset>

@@ -160,6 +160,10 @@ input[type=text], input[type=email], input[type=password], input[type=date], sel
       font-weight: bold;
       margin-top: 20px;
     }
+    small {
+      color: black;
+      font-size: 14px;
+    }
   }
 }
 
@@ -370,9 +374,17 @@ input[type=text], input[type=email], input[type=password], input[type=date], sel
   .job-title {
     font-weight: bold;
     font-size: 20px;
-    margin-top: 4px;
-    margin-left: 4px;
+    margin-top: 6px;
+    margin-bottom: 3px;
+    span {
+      font-weight: 500;
+      font-size: 12px;
+    }
   }
+}
+.job-assignee {
+  font-size: 12px;
+  color: rgb(68, 67, 67);
 }
 .nav-button-createjob {
   font-weight: 700;

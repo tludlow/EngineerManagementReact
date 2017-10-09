@@ -26,7 +26,8 @@ export default class Job extends Component {
         return (
             <div className="job row job-item" onClick={()=> this.searchJob()}>
                 <div className="col-xs-12">
-                    <h5 className="job-title">{this.props.title} - <small style={toStyle}>{relativeTime}</small> {dueSoon ? <span className="due-soon">Due Soon</span> : ""}{overDue ? <span className="due-soon">OVERDUE</span> : ""}</h5>
+                    <h5 className="job-title">{this.props.title} <span>-</span> <small style={toStyle}>{relativeTime}</small> {dueSoon ? <span className="due-soon">Due Soon</span> : ""}{overDue ? <span className="due-soon">OVERDUE</span> : ""}</h5>
+                    <p className="job-assignee">Assigned to: <strong>{this.props.assignee.join(", ")}</strong></p>
                     <p className="job-body">{this.props.body}</p>
                 </div>
             </div>
