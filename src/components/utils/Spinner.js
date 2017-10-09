@@ -1,5 +1,6 @@
 import React from 'react';
 
+//This is a stateless component that takes nothing, just renders out the loading spinner to the page.
 const Spinner = (props) => {
   return (
     <svg className="Spinner" width="65px" height="65px" viewBox="0 0 66 66" xmlns="http://www.w3.org/2000/svg">

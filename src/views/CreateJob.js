@@ -3,6 +3,7 @@ import React, {Component} from 'react';
 import Navbar from "../components/navbar/Navbar";
 import CreateJobForm from "../components/forms/CreateJobForm";
 
+//The page to create a job.
 export default class CreateJob extends Component {
 
 	render() {

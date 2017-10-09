@@ -5,6 +5,7 @@ import Spinner from "../components/utils/Spinner";
 import {browserHistory} from "react-router";
 import { OverlayTrigger, Tooltip } from 'react-bootstrap';
 
+//Page to look at the individual job.
 export default class JobView extends Component {
     constructor(props) {
         super();
@@ -15,21 +16,27 @@ export default class JobView extends Component {
             removeClicks: 0,
         };
     }
-
+    
+    //Load the job data from the api specific to the id.
     componentDidMount() {
         //Get job data from the api.
         const jobID = this.props.params.jobid;
         axios.get("http://localhost:7770/job/getjob/" + jobID).then((response)=> {
+            //there was a response but the response had an errorm let it be known.
             if(response.data.ok === false) {
                 this.setState({loading: false, error: response.data.error});
                 return;
             }
+            //All is good.
             this.setState({loading: false, job: response.data.jobData});
         }).catch((err)=> {
+            //There was an error, tell the user.
             this.setState({loading: false, error: "There was a request error getting the job"});
         });
     }
 
+    //Logic to remove the job from the database, includes database post request and makes sure the user clicks
+    //the button twice so there is no mistake that you actually want to delete the job.
     removeJob() {
         //Query the database to remove the job.
         const jobID = this.props.params.jobid;
@@ -47,10 +54,12 @@ export default class JobView extends Component {
         
     }
 
+    //Future.
     editJob() {
     }
     
 	render() {
+        //The id of the job gotten from the url.
         const jobID = this.props.params.jobid;
         
         //Remove button tooltip.
@@ -58,6 +67,7 @@ export default class JobView extends Component {
             <Tooltip id="tooltip"><strong>Double click</strong> this button to remove the job.</Tooltip>
         );
 
+        //The job data is loading, display the spinner.
         if(this.state.loading) {
             return (
                 <div className="job-view">
@@ -69,6 +79,7 @@ export default class JobView extends Component {
                 </div>
             );
         } 
+        //We had an error getting the data.
         if(this.state.error) {
             return (
                 <div className="job-view">
@@ -80,6 +91,7 @@ export default class JobView extends Component {
                 </div>
             );
         } else {
+            //All is good, display the job.
             return (
                 <div className="job-view">
                     <Navbar />

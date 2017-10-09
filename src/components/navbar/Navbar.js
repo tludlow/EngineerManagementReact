@@ -13,11 +13,13 @@ class Navbar extends Component {
 		this.props.userLogout();
 		browserHistory.push("/");
 	}
+	//Navigate the user to the create a job page.
 	clickHandlerCreate() {
 		browserHistory.push("/createjob");
 	}
 	
 	render() {
+		//Tooltips for things along the navbar, pretty self explanatory.
 		const tooltip = (
   			<Tooltip id="tooltip">Click me to <strong>Logout</strong></Tooltip>
 		);

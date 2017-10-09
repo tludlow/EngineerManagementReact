@@ -10,15 +10,18 @@ export default class Job extends Component {
     }
 
 	render() {
+        //Get the time in a humanized format.
         var relativeTime = moment(this.props.dateDue).fromNow();
         var toStyle;
         var dueSoon = false;
         var overDue = false;
+        //Checks to see if the job is due soon, under 3 days.
         if((relativeTime.includes("days") && parseInt(relativeTime.split(" ")[1], 10) < 4) || relativeTime.includes("hours") || relativeTime.includes("minutes") || relativeTime.split(" ")[2] === "day") {
             toStyle = {color: "red"};
             dueSoon = true;
         }
 
+        //The time humanized includes the word ago, meaning that it was in the past and therefore overdue.
         if(relativeTime.includes("ago")) {
             overDue = true;
         }
