@@ -28,9 +28,13 @@ export default class Job extends Component {
         
         return (
             <div className="job row job-item" onClick={()=> this.searchJob()}>
-                <div className="col-xs-12">
+                <div className="col-xs-2">
+                    <img src="http://via.placeholder.com/100x100" alt="" className="job-img"/>
+                </div>
+                <div className="col-xs-10">
                     <h5 className="job-title">{this.props.title} <span>-</span> <small style={toStyle}>{relativeTime}</small> {dueSoon ? <span className="due-soon">Due Soon</span> : ""}{overDue ? <span className="due-soon">OVERDUE</span> : ""}</h5>
                     <p className="job-assignee">Assigned to: <strong>{this.props.assignee.join(", ")}</strong></p>
+                    <hr className="job-divider"/>
                     <p className="job-body">{this.props.body}</p>
                 </div>
             </div>

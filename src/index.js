@@ -23,6 +23,7 @@ import Home from "./views/Home";
 import AuthView from "./views/AuthView";
 import CreateJob from "./views/CreateJob";
 import JobView from "./views/JobView";
+import ProfileView from "./views/ProfileView";
 
 /* Import our data store */
 import store, {history} from './store';
@@ -55,6 +56,7 @@ render(
         <Route path="/auth" component={AuthView}></Route>
         <Route path="/createjob" component={CreateJob} onEnter={requireAuth()}></Route>
         <Route path="/job/:jobid" component={JobView} onEnter={requireAuth()}></Route>
+        <Route path="/profile/:profileName" component={ProfileView} onEnter={requireAuth()}></Route>
       </Route>
     </Router>
   </Provider>,

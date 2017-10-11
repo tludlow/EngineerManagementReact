@@ -24,7 +24,8 @@ class CreateJobForm extends Component {
     }
 
     handleAssigneeChange(event) {
-        this.setState({assigneeFieldInput: event.target.value, assignedTo: this.refs.formcreatejobassignuser.value.replace(" ", "").split(",")});
+        var inputted = event.target.value.replace(" ", "");
+        this.setState({assigneeFieldInput: event.target.value, assignedTo: inputted.split(",")});
     }
     
 

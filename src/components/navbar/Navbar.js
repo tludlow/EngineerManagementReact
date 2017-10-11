@@ -17,6 +17,11 @@ class Navbar extends Component {
 	clickHandlerCreate() {
 		browserHistory.push("/createjob");
 	}
+	clickHandlerProfile() {
+		if(this.props.user.isLoggedIn) {
+			browserHistory.push("/profile/" + this.props.user.data.username);
+		}
+	}
 	
 	render() {
 		//Tooltips for things along the navbar, pretty self explanatory.
@@ -46,7 +51,7 @@ class Navbar extends Component {
 							<ul className="nav navbar-nav navbar-right">
 								<li className="hidden"><a href="#page-top">Page Top</a></li>
 								{this.props.user.isLoggedIn ? <li onClick={()=> this.clickHandlerCreate()} className="nav-button-createjob"><i className="fa fa-plus create-job"></i></li> : ""}
-								<li>{this.props.user.isLoggedIn ? <p className="navbar-user">{this.props.user.data.verified ? <OverlayTrigger placement="bottom" overlay={tooltipVerified}><i className="fa fa-check" id="navbar-user-verified" ></i></OverlayTrigger> : <p></p>}{this.props.user.data.username} <OverlayTrigger placement="bottom" overlay={tooltip}><i onClick={()=> this.clickHandler()} className="fa fa-caret-down"></i></OverlayTrigger></p> : <Link to="/auth" className="navbar-signuporin">Sign Up / Sign In</Link>}</li>
+								<li>{this.props.user.isLoggedIn ? <p className="navbar-user">{this.props.user.data.verified ? <OverlayTrigger placement="bottom" overlay={tooltipVerified}><i className="fa fa-check" id="navbar-user-verified" ></i></OverlayTrigger> : <p></p>}<span className="nav-username" onClick={()=> this.clickHandlerProfile()}>{this.props.user.data.username}</span> <OverlayTrigger placement="bottom" overlay={tooltip}><i onClick={()=> this.clickHandler()} className="fa fa-caret-down"></i></OverlayTrigger></p> : <Link to="/auth" className="navbar-signuporin">Sign Up / Sign In</Link>}</li>
 							</ul>
 						</div>
 					</div>
