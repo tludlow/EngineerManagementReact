@@ -63,11 +63,15 @@ export default class ProfileView extends Component {
                     <Navbar />
                     <div className="container">
                         {this.state.data.verified ? <OverlayTrigger placement="bottom" overlay={tooltipVerified}><i className="fa fa-check" id="navbar-user-verified" ></i></OverlayTrigger> : <p></p>}<span className="profile-greeting">{this.state.data.username + "'s Profile"}</span>
+                        
                         <p className="profile-email">{this.state.data.email}</p>
+
                         <small>Created {createdAgo}</small> - <strong>Rank:</strong> {this.state.data.role}
+
                         <hr className="profile-divider" />
+
                         {this.state.userJobs.map((job, i)=> (
-                            <Job title={job.title} body={job.body} assignee={job.assignedTo} dateDue={job.dateDue} id={job._id} />
+                            <Job title={job.title} body={job.body} assignee={job.assignedTo} dateDue={job.dateDue} id={job._id} key={i} />
                         ))}
                     </div>
                 </div>

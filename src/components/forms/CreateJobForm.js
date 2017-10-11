@@ -24,7 +24,8 @@ class CreateJobForm extends Component {
     }
 
     handleAssigneeChange(event) {
-        var inputted = event.target.value.replace(" ", "");
+        var inputted = event.target.value.replace(/\s/g, ''); //Regular expression (global match) to replace spaces with nothing!
+        console.log(inputted);
         this.setState({assigneeFieldInput: event.target.value, assignedTo: inputted.split(",")});
     }
     
