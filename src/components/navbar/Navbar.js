@@ -13,10 +13,11 @@ class Navbar extends Component {
 		this.props.userLogout();
 		browserHistory.push("/");
 	}
-	//Navigate the user to the create a job page.
-	clickHandlerCreate() {
-		browserHistory.push("/createjob");
+	//Navigate the user to the page specified.
+	clickHandlerCreate(route) {
+		browserHistory.push("/" + route);
 	}
+
 	clickHandlerProfile() {
 		if(this.props.user.isLoggedIn) {
 			browserHistory.push("/profile/" + this.props.user.data.username);
@@ -50,7 +51,8 @@ class Navbar extends Component {
 						<div className="collapse navbar-collapse clearfix" id="bs-example-navbar-collapse-1">
 							<ul className="nav navbar-nav navbar-right">
 								<li className="hidden"><a href="#page-top">Page Top</a></li>
-								{this.props.user.isLoggedIn ? <li onClick={()=> this.clickHandlerCreate()} className="nav-button-createjob"><i className="fa fa-plus create-job"></i></li> : ""}
+								{this.props.user.isLoggedIn ? <li onClick={()=> this.clickHandlerCreate("createjob")} className="nav-button-createjob"><i className="fa fa-clipboard create-job"></i></li> : ""}
+								{this.props.user.isLoggedIn ? <li onClick={()=> this.clickHandlerCreate("createlocation")} className="nav-button-createjob"><i className="fa fa-map-marker create-location"></i></li> : ""}
 								<li>{this.props.user.isLoggedIn ? <p className="navbar-user">{this.props.user.data.verified ? <OverlayTrigger placement="bottom" overlay={tooltipVerified}><i className="fa fa-check" id="navbar-user-verified" ></i></OverlayTrigger> : <p></p>}<span className="nav-username" onClick={()=> this.clickHandlerProfile()}>{this.props.user.data.username}</span> <OverlayTrigger placement="bottom" overlay={tooltip}><i onClick={()=> this.clickHandler()} className="fa fa-caret-down"></i></OverlayTrigger></p> : <Link to="/auth" className="navbar-signuporin">Sign Up / Sign In</Link>}</li>
 							</ul>
 						</div>
