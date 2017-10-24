@@ -19,8 +19,9 @@ class CreateJobForm extends Component {
         var formBody = this.refs.formcreatejobbody.value;
         var formAssignee = this.refs.formcreatejobassignuser.value;
         var formDatePicked = this.refs.formcreatejobdate.value;
+        var formLocation = this.refs.formcreatejoblocation.value;
 
-		this.props.createJob(formTitle, formBody, this.state.assignedTo, formDatePicked); //title, body, asiggnee, date
+		this.props.createJob(formTitle, formBody, this.state.assignedTo, formDatePicked, formLocation); //title, body, asiggnee, date
     }
 
     handleAssigneeChange(event) {
@@ -71,9 +72,18 @@ class CreateJobForm extends Component {
                     <input type="date" size="30" ref="formcreatejobdate"  min={minDate} required/>
                 </fieldset>
 
+                <fieldset>
+                    <p>Location title</p>
+                    <small>This is the title of a location you should have already created.</small>
+                    <input type="text" placeholer="Location" ref="formcreatejoblocation" required/>
+                </fieldset>
+
                 <button disabled={this.props.jobs.loading} type="submit" className="SignUpForm-submit btn btn-success">
 					{this.props.jobs.loading ? <i className="fa fa-spinner fa-pulse fa-fw SignUpForm__spinner"/> : 'Create Job'}
 				</button>
+                <br />
+                <br />
+                <br />
             </form>
         </div>
         ); 

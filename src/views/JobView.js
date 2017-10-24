@@ -4,6 +4,7 @@ import Navbar from "../components/navbar/Navbar";
 import Spinner from "../components/utils/Spinner";
 import {browserHistory} from "react-router";
 import { OverlayTrigger, Tooltip } from 'react-bootstrap';
+import JobMap from "../components/Map/MyMap";
 
 //Page to look at the individual job.
 export default class JobView extends Component {
@@ -14,6 +15,8 @@ export default class JobView extends Component {
             error: "",
             job: {},
             removeClicks: 0,
+            lat: 0,
+            lng: 0
         };
     }
     
@@ -28,7 +31,7 @@ export default class JobView extends Component {
                 return;
             }
             //All is good.
-            this.setState({loading: false, job: response.data.jobData});
+            this.setState({loading: false, job: response.data.jobData, lat: response.data.lat, lng: response.data.lng});
         }).catch((err)=> {
             //There was an error, tell the user.
             this.setState({loading: false, error: "There was a request error getting the job"});
@@ -59,9 +62,6 @@ export default class JobView extends Component {
     }
     
 	render() {
-        //The id of the job gotten from the url.
-        const jobID = this.props.params.jobid;
-        
         //Remove button tooltip.
         const removeTooltip = (
             <Tooltip id="tooltip"><strong>Double click</strong> this button to remove the job.</Tooltip>
@@ -95,7 +95,10 @@ export default class JobView extends Component {
             return (
                 <div className="job-view">
                     <Navbar />
+                    <br />
                     <div className="container">
+                        <JobMap lat={this.state.lat} long={this.state.lng}/>
+                        <br />
                         <div className="row">
                             <div className="col-xs-2">
                                 <div className="job-menu">
@@ -110,7 +113,8 @@ export default class JobView extends Component {
                             </div>
                             <div className="col-xs-10">
                                 <div className="job-information">
-                                    <h3>{this.state.job.title}</h3>
+                                    <h3><strong>{this.state.job.title}</strong></h3><span className="side-right">Assigned to: <span className="special-span">{this.state.job.assignedTo.join(", ")}</span> by <span className="special-span">{this.state.job.createdBy}</span></span>
+                                    <p>{this.state.job.body}</p>
                                 </div>
                             </div>
                         </div>

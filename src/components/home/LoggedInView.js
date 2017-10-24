@@ -15,23 +15,24 @@ class LoggedInView extends Component {
 		this.state = {
             isLoaded: false,
             error: "",
-            jobs: []
+            jobs: [],
+            locations: []
         };
 	}
 
     componentDidMount() {
         //Get the jobs from the api.
-        axios.get("http://localhost:7770/job/getJobs").then((response)=> {
+        axios.get("http://localhost:7770/job/getJobsAndLocations").then((response)=> {
             //We got an actual response but there was an error, make this known.
             if(response.data.ok === false) {
                 this.setState({isLoaded: true, error: response.data.error});
                 return;
             }
             //All is good, set the state.
-            this.setState({isLoaded: true, jobs: response.data.jobs});
+            this.setState({isLoaded: true, jobs: response.data.jobs, locations: response.data.locations});
         }).catch((err)=> {
             //There was an errorm probably server related so let's tell the user.
-            this.setState({isLoaded: true, error: "There was an error getting the posts."});
+            this.setState({isLoaded: true, error: "There was an error getting the data."});
         });
     }
 
@@ -43,12 +44,27 @@ class LoggedInView extends Component {
                 <div className="homepage">
                     <Navbar />
                     <div className="container">
-                        <h3>Jobs:</h3>
-                        {this.state.jobs.map((job, i)=> (
-                            <div className="row" key={i}>
-                                <Job title={job.title} body={job.body} assignee={job.assignedTo} dateDue={job.dateDue} id={job._id} />
-                            </div>
-					    ))}
+                        <div className="col-xs-3">
+                            <h3><strong>Locations:</strong></h3>
+                            {this.state.locations.map((location, i)=> (
+                                <div className="row locationHome" key={i}>
+                                        <h4><strong>{i+1}</strong> - {location.title}</h4>
+                                        <p>{location.address}</p>
+                                        <p>{location.postcode}</p>
+                                        <p>{location.customer}</p>
+                                </div>
+                            ))}
+                        </div>
+                        <div className="col-xs-9">
+                            <h3><strong>Jobs:</strong></h3>
+                            {this.state.jobs.map((job, i)=> (
+                                <div className="row" key={i}>
+                                    <Job title={job.title} body={job.body} assignee={job.assignedTo} dateDue={job.dateDue} id={job._id} />
+                                </div>
+					        ))}
+                        </div>
+                        
+                        
                     </div>
                 </div>
             );

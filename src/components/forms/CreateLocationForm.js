@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
+import {browserHistory} from "react-router";
 import * as actionCreators from '../../actions/actionCreators';
 import axios from "axios";
 
@@ -12,13 +13,29 @@ class CreateLocationForm extends Component {
             currentPostcode: "",
             postcodeValid: false,
             postcodeData: {},
-            postcodeError: ""
+            postcodeError: "",
+            buttonLoading: false,
+            lat: 51.27,
+            lng: 21.34
         };
     }
     
     handleCreateForm(e) {
         e.preventDefault();
-        console.log("There was a subbmitted form!");
+        this.setState({buttonLoading: true});
+        var formTitle = this.refs.formcreatelocationtitle.value;
+        var formAddress = this.refs.formcreatelocationaddress.value;
+        var formPostcode = this.state.currentPostcode;
+        var formCustomer = this.refs.formcreatelocationcustomer.value;
+
+        axios.post('http://localhost:7770/location/addLocation', {title: formTitle, address: formAddress, postcode: formPostcode, customer: formCustomer, lat: this.state.lat, lng: this.state.lng}).then((response) => {
+            console.log(response);
+            browserHistory.push("/");
+            this.setState({buttonLoading: false});
+        }).catch((err)=> {
+            console.log(err);
+            this.setState({buttonLoading: false});
+        });
     }
 
     handlePostcodeChange(event) {
@@ -30,8 +47,7 @@ class CreateLocationForm extends Component {
 
     queryPostcode(postcode) {
         axios.get("https://api.postcodes.io/postcodes/" + postcode).then((response)=> {
-            console.log(response);
-            this.setState({postcodeError: "", postcodeData: response.data.result, postcodeValid: true});
+            this.setState({postcodeError: "", postcodeData: response.data.result, postcodeValid: true, lat: response.data.result.latitude, lng: response.data.result.longitude});
         }).catch((err)=> {
             this.setState({postcodeError: "Your postcode has an error in it's format."});
         });
@@ -66,7 +82,7 @@ class CreateLocationForm extends Component {
                     </fieldset>
 
                     <button disabled={this.props.jobs.loading} type="submit" className="SignUpForm-submit btn btn-success">
-                        {this.props.jobs.loading ? <i className="fa fa-spinner fa-pulse fa-fw SignUpForm__spinner"/> : 'Create Location'}
+                        {this.state.buttonLoading ? <i className="fa fa-spinner fa-pulse fa-fw SignUpForm__spinner"/> : 'Create Location'}
                     </button>
                 </form>
             </div>

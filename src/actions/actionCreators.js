@@ -90,7 +90,7 @@ export function createJobFailure(err) {
   return {type: 'CREATEJOB_FAILURE', error: err}
 }
 
-export function createJob(title, body, assignee, date) {
+export function createJob(title, body, assignee, date, location) {
   return dispatch => {
     dispatch(createJobRequest());
     return axios({
@@ -100,7 +100,8 @@ export function createJob(title, body, assignee, date) {
         title,
         body,
         assignee,
-        date
+        date,
+        location
       },
       headers: {
         'Authorization': `Token ${localStorage.getItem("token")}`
