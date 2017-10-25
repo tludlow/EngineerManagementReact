@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import GoogleMapReact from 'google-map-react';
 
-const AnyReactComponent = ({ text }) => <div className="map-marker"><i className="fa fa-map-marker" aria-hidden="true"></i></div>;
+const MarkerComponent = ({ text }) => <div className="map-marker"><i className="fa fa-map-marker" aria-hidden="true"></i></div>;
 
 export default class MyMap extends Component {
     static defaultProps = {
@@ -16,7 +16,7 @@ export default class MyMap extends Component {
               defaultCenter={{lat: this.props.lat, lng: this.props.long}}
               defaultZoom={this.props.zoom}
             >
-              <AnyReactComponent
+              <MarkerComponent
                 lat={this.props.lat}
                 lng={this.props.long}
                 text={'Marker'}

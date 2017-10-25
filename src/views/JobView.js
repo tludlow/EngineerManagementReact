@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import axios from "axios";
 import Navbar from "../components/navbar/Navbar";
 import Spinner from "../components/utils/Spinner";
-import {browserHistory} from "react-router";
+import {Link, browserHistory} from "react-router";
 import { OverlayTrigger, Tooltip } from 'react-bootstrap';
 import JobMap from "../components/Map/MyMap";
 
@@ -59,6 +59,7 @@ export default class JobView extends Component {
 
     //Future.
     editJob() {
+        
     }
     
 	render() {
@@ -113,7 +114,11 @@ export default class JobView extends Component {
                             </div>
                             <div className="col-xs-10">
                                 <div className="job-information">
-                                    <h3><strong>{this.state.job.title}</strong></h3><span className="side-right">Assigned to: <span className="special-span">{this.state.job.assignedTo.join(", ")}</span> by <span className="special-span">{this.state.job.createdBy}</span></span>
+                                    <h3><strong>{this.state.job.title}</strong></h3>
+                                    <p>Assigned To: {this.state.job.assignedTo.map((person, i) => (
+                                        <Link to={"/profile/" + person}>{person} </Link>
+                                    ))}</p>
+                                    <p>Created By: <Link to={"/profile/" + this.state.job.createdBy}>{this.state.job.createdBy}</Link></p>
                                     <p>{this.state.job.body}</p>
                                 </div>
                             </div>

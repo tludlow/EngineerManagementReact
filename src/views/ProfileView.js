@@ -21,6 +21,7 @@ export default class ProfileView extends Component {
 
     componentDidMount() {
         axios.get("http://localhost:7770/user/profile/" + this.props.params.profileName).then((response)=> {
+            console.log(response);
             if(response.data.ok === false) {
                 this.setState({loading: false, error: response.data.error});
                 return;
@@ -46,13 +47,16 @@ export default class ProfileView extends Component {
             );
            
         } else if(this.state.error.length > 1) {
+            return(
                 <div className="profile-view">
-                <Navbar />
-                <div className="container">
-                    <h3>There was an error loading the profile data...</h3>
-                    <p>{this.state.error}</p>
+                    <Navbar />
+                    <div className="container">
+                        <h3>There was an error loading the profile data...</h3>
+                        <p>{this.state.error}</p>
+                    </div>
                 </div>
-            </div>
+            );
+                
         } else {
             const tooltipVerified = (
                 <Tooltip id="tooltip">This is a <strong>verified</strong> user</Tooltip>

@@ -3,6 +3,7 @@ import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
 import * as actionCreators from '../../actions/actionCreators';
 import axios from "axios";
+import { Link } from "react-router";
 
 import Navbar from "../navbar/Navbar";
 import Spinner from "../utils/Spinner";
@@ -51,7 +52,7 @@ class LoggedInView extends Component {
                                         <h4><strong>{i+1}</strong> - {location.title}</h4>
                                         <p>{location.address}</p>
                                         <p>{location.postcode}</p>
-                                        <p>{location.customer}</p>
+                                        <Link to={"/profile/" + location.customer}>{location.customer}</Link>
                                 </div>
                             ))}
                         </div>

@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
 import * as actionCreators from '../../actions/actionCreators';
+import axios from "axios";
 
 class CreateJobForm extends Component {
 
@@ -10,14 +11,30 @@ class CreateJobForm extends Component {
         this.state = {
             assignedTo: [],
             assigneeFieldInput: "",
+            locations: {},
+            loading: true,
+            error: ""
         };
     }
+
+    componentDidMount() {
+        //Get all the locations for the select option below.
+        axios.get("http://localhost:7770/location/getLocations").then((response)=> {
+            if(response.data.ok === false) {
+                this.setState({loading: false, error: response.data.error});
+            }
+            this.setState({loading: false, locations: response.data.locations});
+        }).catch((err)=> {
+            this.setState({loading: false, error: err});
+        })
+    }
+
     handleCreateForm(e) {
         e.preventDefault();
         console.log("submitted");
 		var formTitle = this.refs.formcreatejobtitle.value;
         var formBody = this.refs.formcreatejobbody.value;
-        var formAssignee = this.refs.formcreatejobassignuser.value;
+        //The form assignee is tracked in internal component state
         var formDatePicked = this.refs.formcreatejobdate.value;
         var formLocation = this.refs.formcreatejoblocation.value;
 
@@ -32,6 +49,16 @@ class CreateJobForm extends Component {
     
 
 	render() {
+        if(this.state.loading) {
+            return (
+                <h3>Loading...</h3>
+            );
+        }
+        if(this.state.error.length > 1) {
+            return (
+                <h3>Error: {this.state.error}</h3>
+            );
+        }
         //Work out the min value of the date needed to be injected in the form, this needs to be a string of the form "yyyy-mm-dd" where the
         //month and date, if only have one number need a zero before them.
         //also, javascript is silly and starts counting months at 0 so we need to add 1.
@@ -75,7 +102,11 @@ class CreateJobForm extends Component {
                 <fieldset>
                     <p>Location title</p>
                     <small>This is the title of a location you should have already created.</small>
-                    <input type="text" placeholer="Location" ref="formcreatejoblocation" required/>
+                    <select ref="formcreatejoblocation">
+                        {this.state.locations.map((location, i)=>
+                            <option value={location.title}>{location.title}</option>
+                        )}
+                    </select>
                 </fieldset>
 
                 <button disabled={this.props.jobs.loading} type="submit" className="SignUpForm-submit btn btn-success">
