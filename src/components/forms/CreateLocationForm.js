@@ -32,11 +32,9 @@ class CreateLocationForm extends Component {
         var formCustomer = this.refs.formcreatelocationcustomer.value;
 
         axios.post('http://localhost:7770/location/addLocation', {title: formTitle, address: formAddress, postcode: formPostcode, customer: formCustomer, lat: this.state.lat, lng: this.state.lng}).then((response) => {
-            console.log(response);
             browserHistory.push("/");
             this.setState({buttonLoading: false});
         }).catch((err)=> {
-            console.log(err);
             this.setState({buttonLoading: false});
         });
     }

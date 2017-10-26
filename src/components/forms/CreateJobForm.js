@@ -31,7 +31,6 @@ class CreateJobForm extends Component {
 
     handleCreateForm(e) {
         e.preventDefault();
-        console.log("submitted");
 		var formTitle = this.refs.formcreatejobtitle.value;
         var formBody = this.refs.formcreatejobbody.value;
         //The form assignee is tracked in internal component state
@@ -43,7 +42,6 @@ class CreateJobForm extends Component {
 
     handleAssigneeChange(event) {
         var inputted = event.target.value.replace(/\s/g, ''); //Regular expression (global match) to replace spaces with nothing!
-        console.log(inputted);
         this.setState({assigneeFieldInput: event.target.value, assignedTo: inputted.split(",")});
     }
     
