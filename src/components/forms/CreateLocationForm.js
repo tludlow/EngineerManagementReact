@@ -22,6 +22,9 @@ class CreateLocationForm extends Component {
     
     handleCreateForm(e) {
         e.preventDefault();
+        if(!this.state.postcodeValid) {
+            return;
+        }
         this.setState({buttonLoading: true});
         var formTitle = this.refs.formcreatelocationtitle.value;
         var formAddress = this.refs.formcreatelocationaddress.value;
