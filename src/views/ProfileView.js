@@ -21,7 +21,6 @@ export default class ProfileView extends Component {
 
     componentDidMount() {
         axios.get("http://localhost:7770/user/profile/" + this.props.params.profileName).then((response)=> {
-            console.log(response);
             if(response.data.ok === false) {
                 this.setState({loading: false, error: response.data.error});
                 return;

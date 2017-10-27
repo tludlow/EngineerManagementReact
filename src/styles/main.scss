@@ -423,6 +423,31 @@ input[type=text], input[type=email], input[type=password], input[type=date], sel
     
   }
 }
+.nav-button-notify {
+  font-weight: 700;
+  margin-top: 10px;
+  margin-right: 25px;
+  padding: 7px;
+  background-color: rgb(221, 23, 23);
+  color: white;
+  border-radius: 50%;
+  width: 32px;
+  height: 32px;
+  -webkit-box-shadow: 4px 4px 5px 0px rgba(0, 0, 0, 0.1);
+  -moz-box-shadow: 4px 4px 5px 0px rgba(0, 0, 0, 0.1);
+  box-shadow: 4px 4px 5px 0px rgba(0, 0, 0, 0.1);
+  transition: .5s ease-in-out;
+  &:hover {
+    background-color: #ff0000;
+    transition: .5s ease-in-out;
+    cursor: pointer;
+  }
+  span {
+    margin-left: 4px;
+    font-weight: bold;
+    
+  }
+}
 .due-soon {
   color: white;
   background-color: red;

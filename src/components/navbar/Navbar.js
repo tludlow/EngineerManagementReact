@@ -39,7 +39,11 @@ class Navbar extends Component {
 		
 		const tooltipLocation = (
 			<Tooltip id="tooltip">Create a new location</Tooltip>
-	  	);
+		  );
+		
+		const notificationTooltip = (
+		<Tooltip id="tooltip">You have {this.props.notification} notifications</Tooltip>
+		);
 		return (
 			<div>
 				<nav id="mainNav" className="navbar navbar-default navbar-custom">
@@ -59,6 +63,7 @@ class Navbar extends Component {
 						<div className="collapse navbar-collapse clearfix" id="bs-example-navbar-collapse-1">
 							<ul className="nav navbar-nav navbar-right">
 								<li className="hidden"><a href="#page-top">Page Top</a></li>
+								{this.props.notification > 0 ? <OverlayTrigger placement="bottom" overlay={notificationTooltip}><li className="nav-button-notify"><span>{this.props.notification}</span></li></OverlayTrigger>: ""}
 								{this.props.user.isLoggedIn ? <OverlayTrigger placement="bottom" overlay={tooltipJob}><li onClick={()=> this.clickHandlerCreate("createjob")} className="nav-button-createjob"><i className="fa fa-clipboard create-job"></i></li></OverlayTrigger> : ""}
 								{this.props.user.isLoggedIn ? <OverlayTrigger placement="bottom" overlay={tooltipLocation}><li onClick={()=> this.clickHandlerCreate("createlocation")} className="nav-button-createjob"><i className="fa fa-map-marker create-location"></i></li></OverlayTrigger> : ""}
 								<li>{this.props.user.isLoggedIn ? <p className="navbar-user">{this.props.user.data.verified ? <OverlayTrigger placement="bottom" overlay={tooltipVerified}><i className="fa fa-check" id="navbar-user-verified" ></i></OverlayTrigger> : <p></p>}<span className="nav-username" onClick={()=> this.clickHandlerProfile()}>{this.props.user.data.username}</span> <OverlayTrigger placement="bottom" overlay={tooltip}><i onClick={()=> this.clickHandler()} className="fa fa-caret-down"></i></OverlayTrigger></p> : <Link to="/auth" className="navbar-signuporin">Sign Up / Sign In</Link>}</li>

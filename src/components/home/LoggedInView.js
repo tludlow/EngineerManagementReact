@@ -17,20 +17,21 @@ class LoggedInView extends Component {
             isLoaded: false,
             error: "",
             jobs: [],
-            locations: []
+            locations: [],
+            notifications: {},
         };
 	}
 
     componentDidMount() {
         //Get the jobs from the api.
-        axios.get("http://localhost:7770/job/getJobsAndLocations").then((response)=> {
+        axios.get("http://localhost:7770/job/getJobsAndLocations/" + localStorage.getItem("token")).then((response)=> {
             //We got an actual response but there was an error, make this known.
             if(response.data.ok === false) {
                 this.setState({isLoaded: true, error: response.data.error});
                 return;
             }
             //All is good, set the state.
-            this.setState({isLoaded: true, jobs: response.data.jobs, locations: response.data.locations});
+            this.setState({isLoaded: true, jobs: response.data.jobs, locations: response.data.locations, notifications: response.data.notifications});
         }).catch((err)=> {
             //There was an errorm probably server related so let's tell the user.
             this.setState({isLoaded: true, error: "There was an error getting the data."});
@@ -43,7 +44,7 @@ class LoggedInView extends Component {
         if(this.state.isLoaded && this.state.error.length < 1 ) {
             return (
                 <div className="homepage">
-                    <Navbar />
+                    <Navbar notification={this.state.notifications}/>
                     <div className="container">
                         <div className="col-xs-3">
                             <h3><strong>Locations:</strong></h3>
