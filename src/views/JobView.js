@@ -5,6 +5,8 @@ import Spinner from "../components/utils/Spinner";
 import {Link, browserHistory} from "react-router";
 import { OverlayTrigger, Tooltip } from 'react-bootstrap';
 import JobMap from "../components/Map/MyMap";
+import CreateCommentForm from "../components/forms/CreateCommentForm";
+import moment from "moment";
 
 //Page to look at the individual job.
 export default class JobView extends Component {
@@ -16,7 +18,8 @@ export default class JobView extends Component {
             job: {},
             removeClicks: 0,
             lat: 0,
-            lng: 0
+            lng: 0,
+            comments: {}
         };
     }
     
@@ -31,7 +34,7 @@ export default class JobView extends Component {
                 return;
             }
             //All is good.
-            this.setState({loading: false, job: response.data.jobData, lat: response.data.lat, lng: response.data.lng});
+            this.setState({loading: false, job: response.data.jobData, lat: response.data.lat, lng: response.data.lng, comments: response.data.comments});
         }).catch((err)=> {
             //There was an error, tell the user.
             this.setState({loading: false, error: "There was a request error getting the job"});
@@ -49,7 +52,7 @@ export default class JobView extends Component {
             return;
         }
         //Query the api to delete the job.
-        axios.get("http://localhost:7770/job/deletejob/" + jobID).then((response)=> {
+        axios.get("http://localhost:7770/job/deletejob/" + jobID + "/" + localStorage.getItem("token")).then((response)=> {
             browserHistory.push("/");
         }).catch((err)=> {
             browserHistory.push("/");
@@ -116,11 +119,25 @@ export default class JobView extends Component {
                                 <div className="job-information">
                                     <h3><strong>{this.state.job.title}</strong></h3>
                                     <p>Assigned To: {this.state.job.assignedTo.map((person, i) => (
-                                        <Link to={"/profile/" + person}>{person} </Link>
+                                        <Link key={i} to={"/profile/" + person}>{person} </Link>
                                     ))}</p>
                                     <p>Created By: <Link to={"/profile/" + this.state.job.createdBy}>{this.state.job.createdBy}</Link></p>
                                     <p>{this.state.job.body}</p>
                                 </div>
+                            </div>
+                        </div>
+                        <div className="row">
+                            <div className="col-xs-12">
+                                <CreateCommentForm jobid={this.state.job._id} />
+                                <hr/>
+                                {this.state.comments.map((comment, i)=> (
+                                    <div key={i} className="comment">
+                                        <h5 className="bold">{comment.user} <small>- {moment(comment.createdAt).fromNow()}</small></h5>
+                                        <p>{comment.content}</p>
+                                        <br/>
+                                        <br/>
+                                    </div>
+                                ))}
                             </div>
                         </div>
                     </div>
