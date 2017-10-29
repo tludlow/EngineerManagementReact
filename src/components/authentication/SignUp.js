@@ -28,7 +28,7 @@ class SignUp extends Component {
 			this.setState({errorMessage: "Your passswords don't match."});
 			return;
 		}
-		//Check if the username is oneword and doesn't contain characters it shouldnt.
+		//Check if the username is one word and doesn't contain characters it shouldnt.
 		if (!/^[A-Z0-9_-]{3,30}$/i.test(usernameInput)) {
 			this.setState({errorMessage: "Your username isn't of the right format, it should be one word and contain only these '-' and '_' special characters."});
 			return;

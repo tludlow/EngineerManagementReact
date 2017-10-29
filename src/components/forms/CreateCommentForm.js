@@ -16,6 +16,10 @@ class CreateCommentForm extends Component {
     handleCreateForm(e) {
         e.preventDefault();
         let userInput = this.refs.formcreatecommentcontent.value;
+        if(userInput.length > 200) {
+            this.setState({error: "Your comment is too long!"});
+            return;
+        }
         axios.post("http://localhost:7770/job/comment", {job: this.props.jobid, user: this.props.user.data.username, content: userInput}).then((response)=> {
             if(response.data.ok === false) {
                 this.setState({error: response.data.error});
@@ -35,7 +39,7 @@ class CreateCommentForm extends Component {
             <form className="createCommentForm" onSubmit={(e) => this.handleCreateForm(e)}>			
                 <fieldset>
                     <p>User Comments:</p>
-                    <textarea placeholder="What are your thoughts?..." ref="formcreatecommentcontent" required/>
+                    <textarea placeholder="What are your thoughts?... max length of 200 characters." ref="formcreatecommentcontent" required/>
                 </fieldset>
 
                 {this.state.error.length > 1 ? <p className="error">There was an error...</p> : ""}
