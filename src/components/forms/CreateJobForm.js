@@ -102,7 +102,7 @@ class CreateJobForm extends Component {
                     <small>This is the title of a location you should have already created.</small>
                     <select ref="formcreatejoblocation" required>
                         {this.state.locations.map((location, i)=>
-                            <option value={location.title}>{location.title}</option>
+                            <option key={i} value={location.title}>{location.title}</option>
                         )}
                     </select>
                 </fieldset>

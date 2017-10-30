@@ -62,7 +62,7 @@ input[type=text], input[type=email], input[type=password], input[type=date], sel
 }
 
 .navbar-default .navbar-brand {
-  color: #5F6360;
+  color: rgb(35, 36, 35);
   font-weight: bold;
   font-size: 22px;
 }
@@ -129,7 +129,7 @@ input[type=text], input[type=email], input[type=password], input[type=date], sel
 #wrench-logo {
   font-size: 3rem;
   margin-top: 8px;
-  color:#5F6360;
+  color: rgb(35, 36, 35);
   float: left;
   margin-right: 8px;
   text-shadow: 4px 4px 5px 0px rgba(0,0,0,0.2);
@@ -144,8 +144,8 @@ input[type=text], input[type=email], input[type=password], input[type=date], sel
   .SignUpForm-submit {
     margin-top: 10px;
     background: #FF5F6D;  /* fallback for old browsers */
-    background: -webkit-linear-gradient(to right, #DFA559, #FF5F6D);  /* Chrome 10-25, Safari 5.1-6 */
-    background: linear-gradient(to right, #DFA559, #FF5F6D); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */ 
+    background: -webkit-linear-gradient(to right, rgb(223, 134, 19), #FF5F6D);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, rgb(223, 134, 19), #FF5F6D); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */ 
     border: none !important; 
   }
   .formErrors {

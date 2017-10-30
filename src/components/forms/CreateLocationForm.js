@@ -50,7 +50,7 @@ class CreateLocationForm extends Component {
         axios.get("https://api.postcodes.io/postcodes/" + postcode).then((response)=> {
             this.setState({postcodeError: "", postcodeData: response.data.result, postcodeValid: true, lat: response.data.result.latitude, lng: response.data.result.longitude});
         }).catch((err)=> {
-            this.setState({postcodeError: "Your postcode has an error in it's format."});
+            this.setState({postcodeError: "There was an error connecting to the postcode API."});
         });
     }
 
