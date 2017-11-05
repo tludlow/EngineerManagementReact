@@ -60,10 +60,6 @@ export default class JobView extends Component {
         
     }
 
-    //Future.
-    editJob() {
-        
-    }
     
 	render() {
         //Remove button tooltip.
@@ -111,8 +107,6 @@ export default class JobView extends Component {
                                             <i onClick={()=> this.removeJob()} className="fa fa-remove job-remove-button"></i> <span>Remove Job</span>
                                         </div>
                                     </OverlayTrigger>
-                                    <br/>
-                                    <i onClick={()=> this.editJob()} className="fa fa-pencil job-edit-button"></i> <span>Edit Job</span>
                                 </div>
                             </div>
                             <div className="col-xs-10">
