@@ -25,6 +25,7 @@ import CreateJob from "./views/CreateJob";
 import CreateLocation from "./views/CreateLocation";
 import JobView from "./views/JobView";
 import ProfileView from "./views/ProfileView";
+import FourOFour from "./views/FourOFour";
 
 /* Import our data store */
 import store, {history} from './store';
@@ -60,6 +61,7 @@ render(
         <Route path="/job/:jobid" component={JobView} onEnter={requireAuth()}></Route>
         <Route path="/profile/:profileName" component={ProfileView} onEnter={requireAuth()}></Route>
       </Route>
+      <Route path="*" component={FourOFour} />
     </Router>
   </Provider>,
   document.getElementById('root')
