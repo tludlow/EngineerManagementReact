@@ -30,12 +30,12 @@ class SignUp extends Component {
 		}
 		//Check if the username is one word and doesn't contain characters it shouldnt.
 		if (!/^[A-Z0-9_-]{3,30}$/i.test(usernameInput)) {
-			this.setState({errorMessage: "Your username isn't of the right format, it should be one word and contain only these '-' and '_' special characters."});
+			this.setState({errorMessage: "Your username isn't of the right format, it should be one word and contain only these '-' and '_' special characters. It should also be between 3 and 30 characters."});
 			return;
 		}
 		// Check if the username is off the right length > 3 characters and <= 30
 		// characters.
-		if (usernameInput.length > 30 || usernameInput.length < 4) {
+		if (usernameInput.length > 30 || usernameInput.length < 3) {
 			this.setState({errorMessage: "Your username should be longer than 3 characters and less than 30, which yours is not."});
 			return;
 		}
