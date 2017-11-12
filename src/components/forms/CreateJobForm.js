@@ -13,7 +13,8 @@ class CreateJobForm extends Component {
             assigneeFieldInput: "",
             locations: {},
             loading: true,
-            error: ""
+            error: "",
+            numberOfAssigned: 0
         };
     }
 
@@ -43,6 +44,7 @@ class CreateJobForm extends Component {
     handleAssigneeChange(event) {
         var inputted = event.target.value.replace(/\s/g, ''); //Regular expression (global match) to replace spaces with nothing!
         this.setState({assigneeFieldInput: event.target.value, assignedTo: inputted.split(",")});
+        this.setState({numberOfAssigned: this.state.assignedTo.length});
     }
     
 
@@ -88,7 +90,8 @@ class CreateJobForm extends Component {
                 <fieldset>
                     <p>Assign User</p>
                     <small>If assigning multiple users, seperate names with commas as such jeff,bill,bob</small><br/>
-                    <small>Assigned to: {this.state.assignedTo.length ? (this.state.assignedTo.join(",")) : 'Nobody!'}</small>
+                    <small>Assigned to: {this.state.assignedTo.length ? (this.state.assignedTo.join(",")) : 'Nobody!'}</small><br/>
+                    <small>Number of assigned users: {this.state.numberOfAssigned}</small>
                     <input type="text" value={this.state.assigneeFieldInput} placeholder="Assign user, type their username(s)" ref="formcreatejobassignuser" onChange={(event)=> this.handleAssigneeChange(event)} required/>
                 </fieldset>
 

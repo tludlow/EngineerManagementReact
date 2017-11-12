@@ -116,6 +116,7 @@ export default class JobView extends Component {
                                         <Link key={i} to={"/profile/" + person}>{person} </Link>
                                     ))}</p>
                                     <p>Created By: <Link to={"/profile/" + this.state.job.createdBy}>{this.state.job.createdBy}</Link></p>
+                                    <p>Due <small>{moment(this.state.job.dateDue).fromNow()}</small></p>
                                     <p>{this.state.job.body}</p>
                                 </div>
                             </div>
