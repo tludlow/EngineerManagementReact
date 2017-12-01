@@ -18,6 +18,7 @@ class CreateJobForm extends Component {
         };
     }
 
+    //Load the location data which is being used in the form.
     componentDidMount() {
         //Get all the locations for the select option below.
         axios.get("http://localhost:7770/location/getLocations").then((response)=> {
@@ -30,6 +31,7 @@ class CreateJobForm extends Component {
         })
     }
 
+    //Handle the submitting of the form and submit the action
     handleCreateForm(e) {
         e.preventDefault();
 		var formTitle = this.refs.formcreatejobtitle.value;
@@ -41,6 +43,7 @@ class CreateJobForm extends Component {
 		this.props.createJob(formTitle, formBody, this.state.assignedTo, formDatePicked, formLocation); //title, body, asiggnee, date
     }
 
+    //Handle the action of addiding/removing a user from the assignee list.
     handleAssigneeChange(event) {
         var inputted = event.target.value.replace(/\s/g, ''); //Regular expression (global match) to replace spaces with nothing!
         this.setState({assigneeFieldInput: event.target.value, assignedTo: inputted.split(",")});
@@ -48,6 +51,7 @@ class CreateJobForm extends Component {
     }
     
 
+    //Render the form in html to the user.
 	render() {
         if(this.state.loading) {
             return (
@@ -122,6 +126,7 @@ class CreateJobForm extends Component {
 	}
 }
 
+//These functions below connect the component to the internal redux state in this component without having to pass data down through the component hierarchy
 function mapStateToProps(state) {
 	return {user: state.user, jobs: state.jobs};
 }

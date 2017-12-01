@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 
 export default class Main extends Component {
 
+  //Main component that renders child components.
   render() {
     return (
       <div>

@@ -3,6 +3,7 @@ import React, {Component} from 'react';
 import Navbar from "../navbar/Navbar";
 
 export default class LoggedOutView extends Component {
+    //Render a pretty basic html page to the user.
 	render() {
         return (
             <div className="homepage">

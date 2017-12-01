@@ -13,6 +13,7 @@ class CreateCommentForm extends Component {
         };
     }
 
+    //Handle the submiting of the form by the user.
     handleCreateForm(e) {
         e.preventDefault();
         let userInput = this.refs.formcreatecommentcontent.value;
@@ -32,6 +33,7 @@ class CreateCommentForm extends Component {
     }
     
 
+    //Render html to the component
 	render() {
         return (
         <div className="createCommentForm">
@@ -56,6 +58,7 @@ class CreateCommentForm extends Component {
 	}
 }
 
+//These functions below connect the component to the internal redux state in this component without having to pass data down through the component hierarchy
 function mapStateToProps(state) {
 	return {user: state.user, jobs: state.jobs};
 }

@@ -12,10 +12,12 @@ class SignUp extends Component {
 		};
 	}
 
+	//Reset the error message, used if the page gets reloaded
 	componentDidMount() {
 		this.setState({errorMessage: ""});
 	}
 
+	//authenticate the data entered and submit the action to the redux state.
 	handleSubmitSignup(e) {
 		e.preventDefault();
 		var usernameInput = this.refs.signupusername.value;
@@ -49,6 +51,7 @@ class SignUp extends Component {
 
 	}
 
+	//Submit the login action
 	handleSubmitLogin(e) {
 		e.preventDefault();
 		var usernameInput = this.refs.loginusername.value;
@@ -57,6 +60,7 @@ class SignUp extends Component {
 		this.props.loginUser(usernameInput, passwordInput);
 	}
 
+	//Change the view to the opposite form.
 	changeView() {
 		this.state.view === "signup" ? this.setState({view: "signin"}) : this.setState({view: "signup"});
 		this.setState({errorMessage: ""});
@@ -140,9 +144,9 @@ class SignUp extends Component {
 		}
 	}
 }
-// expose the user state to this component so we dont need to pass up state
-// through props to the parent component. Probably isnt the best way to do this
-// But will be good for now.
+
+
+//These functions below connect the component to the internal redux state in this component without having to pass data down through the component hierarchy
 function mapStateToProps(state) {
 	return {user: state.user};
 }

@@ -3,6 +3,7 @@ import React, {Component} from 'react';
 import Navbar from "../components/navbar/Navbar";
 import { Link } from "react-router";
 
+//The error page which happens when the route isnt found.
 export default class FourOFour extends Component {
 
 	render() {

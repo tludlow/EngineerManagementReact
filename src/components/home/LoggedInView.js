@@ -22,6 +22,7 @@ class LoggedInView extends Component {
         };
 	}
 
+    //Get the information for the users homepage view. The jobs and locations needed from the api.
     componentDidMount() {
         //Get the jobs from the api.
         axios.get("http://localhost:7770/job/getJobsAndLocations/" + localStorage.getItem("token")).then((response)=> {
@@ -95,7 +96,7 @@ class LoggedInView extends Component {
 	}
 }
 
-//Map the state of the application to the props.
+//These functions below connect the component to the internal redux state in this component without having to pass data down through the component hierarchy
 function mapStateToProps(state) {
 	return {user: state.user};
 }

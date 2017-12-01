@@ -1,3 +1,4 @@
+//Switch statemeent to handle all user redux actions.
 function user(state = {}, action) {
 	switch (action.type) {
 		case 'USER_SIGNUP_REQUEST':

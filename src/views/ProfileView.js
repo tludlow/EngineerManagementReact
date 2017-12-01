@@ -7,7 +7,7 @@ import Spinner from "../components/utils/Spinner";
 import { OverlayTrigger, Tooltip } from 'react-bootstrap';
 import Job from "../components/Jobs/Job";
 
-//The page to create a job.
+//The page to display a profile..
 export default class ProfileView extends Component {
 
     constructor(props) {
@@ -19,6 +19,7 @@ export default class ProfileView extends Component {
         };
     }
 
+    //Get the user's profile data for which the route is for.
     componentDidMount() {
         axios.get("http://localhost:7770/user/profile/" + this.props.params.profileName).then((response)=> {
             if(response.data.ok === false) {
@@ -31,6 +32,7 @@ export default class ProfileView extends Component {
         });
     }
 
+    //Render either a loading bar, error to the user or the profile.
 	render() {
         const profileName = this.props.params.profileName;
 

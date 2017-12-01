@@ -6,6 +6,7 @@ import {browserHistory} from "react-router";
 
 class AuthOnlyView extends Component {
 
+    //Check for the user being logged in, if not redirect.
 	componentWillMount() {
         if(!this.props.user.isLoggedIn) {
             browserHistory.push("/auth");
@@ -14,6 +15,7 @@ class AuthOnlyView extends Component {
     }
 }
 
+//These functions below connect the component to the internal redux state in this component without having to pass data down through the component hierarchy
 function mapStateToProps(state) {
 	return {user: state.user};
 }

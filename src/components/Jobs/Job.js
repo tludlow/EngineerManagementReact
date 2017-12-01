@@ -5,10 +5,12 @@ import {browserHistory} from "react-router";
 
 export default class Job extends Component {
 
+    //Navigate the user to the job given in the props.
     searchJob() {
         browserHistory.push("/job/" + this.props.id);
     }
 
+    //Display the html to the user of the component
 	render() {
         //Get the time in a humanized format.
         var relativeTime = moment(this.props.dateDue).fromNow();

@@ -18,6 +18,7 @@ class Navbar extends Component {
 		browserHistory.push("/" + route);
 	}
 
+	//Handle what happens when the user clicks their profile.
 	clickHandlerProfile() {
 		if(this.props.user.isLoggedIn) {
 			browserHistory.push("/profile/" + this.props.user.data.username);
@@ -44,6 +45,7 @@ class Navbar extends Component {
 		const notificationTooltip = (
 		<Tooltip id="tooltip">You have {this.props.notification} notifications</Tooltip>
 		);
+		//Render the html navbar to the user.
 		return (
 			<div>
 				<nav id="mainNav" className="navbar navbar-default navbar-custom">
@@ -76,6 +78,7 @@ class Navbar extends Component {
 	}
 }
 
+//These functions below connect the component to the internal redux state in this component without having to pass data down through the component hierarchy
 function mapStateToProps(state) {
 	return {user: state.user};
 }

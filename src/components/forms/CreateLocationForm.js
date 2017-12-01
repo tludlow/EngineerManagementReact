@@ -20,6 +20,7 @@ class CreateLocationForm extends Component {
         };
     }
     
+    //Handle the creation of the location through the form data and request to the server.
     handleCreateForm(e) {
         e.preventDefault();
         if(!this.state.postcodeValid) {
@@ -39,6 +40,7 @@ class CreateLocationForm extends Component {
         });
     }
 
+    //Validate the postcode when changed by the user.
     handlePostcodeChange(event) {
         this.setState({currentPostcode: event.target.value});
         if(event.target.value.length > 4) {
@@ -46,6 +48,7 @@ class CreateLocationForm extends Component {
         }
     }
 
+    //Query the postcodes.io api to verify the authenticity of the postcode the user has entered.
     queryPostcode(postcode) {
         axios.get("https://api.postcodes.io/postcodes/" + postcode).then((response)=> {
             this.setState({postcodeError: "", postcodeData: response.data.result, postcodeValid: true, lat: response.data.result.latitude, lng: response.data.result.longitude});
@@ -54,6 +57,7 @@ class CreateLocationForm extends Component {
         });
     }
 
+    //Render the location for to the user.
 	render() {
         return (
             <div className="createLocationForm">
@@ -91,6 +95,7 @@ class CreateLocationForm extends Component {
 	}
 }
 
+//These functions below connect the component to the internal redux state in this component without having to pass data down through the component hierarchy
 function mapStateToProps(state) {
 	return {user: state.user, jobs: state.jobs};
 }

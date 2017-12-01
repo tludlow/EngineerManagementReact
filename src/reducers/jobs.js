@@ -1,3 +1,4 @@
+//Switch statement that handles all job related actions.
 function jobs(state = {}, action) {
 	switch (action.type) {
 		case 'CREATEJOB_REQUEST':
