@@ -67,17 +67,3 @@ render(
   document.getElementById('root')
 );
 
-/*
-render(
-  <Provider store={store}>
-    <Router history={history}>
-      <Route path="/" component={App}>
-        <IndexRoute component={PhotoGrid} />
-        <Route path="/view/:postId" component={Single}></Route>
-      </Route>
-    </Router>
-  </Provider>,
-  document.getElementById('root')
-);
-
-*/
