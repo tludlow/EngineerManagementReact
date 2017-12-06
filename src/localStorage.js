@@ -17,5 +17,7 @@ export const saveState = (state) => {
   try {
     const serializedState = JSON.stringify(state);
     localStorage.setItem('engineermanagement', serializedState);
-  } catch (err) {}
+  } catch (err) {
+    return undefined;  
+  }
 }
