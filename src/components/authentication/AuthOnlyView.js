@@ -7,7 +7,7 @@ import {browserHistory} from "react-router";
 class AuthOnlyView extends Component {
 
     //Check for the user being logged in, if not redirect.
-	componentWillMount() {
+    componentWillMount() {
         if(!this.props.user.isLoggedIn) {
             browserHistory.push("/auth");
             return;
