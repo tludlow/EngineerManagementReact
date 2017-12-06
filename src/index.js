@@ -30,12 +30,6 @@ import FourOFour from "./views/FourOFour";
 /* Import our data store */
 import store, {history} from './store';
 
-/*
-  Error Logging
-*/
-
-// import Raven from 'raven-js'; import { sentry_url } from './data/config';
-// if(window) {   Raven.config(sentry_url).install(); }
 
 function requireAuth() {
   return(nextState, replace) => {
